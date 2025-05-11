@@ -1,0 +1,295 @@
+/* Accessibility Utilities */
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:not(:focus) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus Styles */
+.focus-visible:focus {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+.focus-visible:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.focus-visible:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+/* Skip Links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-500);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+    .high-contrast {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Color Contrast */
+.high-contrast-text {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+/* Keyboard Navigation */
+[tabindex="-1"]:focus:not(:focus-visible) {
+    outline: 0 !important;
+}
+
+/* ARIA States */
+[aria-hidden="true"] {
+    display: none !important;
+}
+
+[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Focus Ring */
+.focus-ring {
+    position: relative;
+}
+
+.focus-ring::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    border: 2px solid var(--primary-500);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.focus-ring:focus::after {
+    opacity: 1;
+}
+
+/* Touch Target Sizes */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+}
+
+/* Text Size Adjustment */
+.text-size-adjust {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+/* Line Height for Readability */
+.readable-text {
+    line-height: 1.5;
+    max-width: 70ch;
+}
+
+/* Color Blindness Support */
+.color-blind-friendly {
+    /* Use patterns and shapes in addition to colors */
+    border-style: solid;
+    border-width: 2px;
+}
+
+/* Dyslexia Support */
+.dyslexia-friendly {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    word-spacing: 0.16em;
+}
+
+/* Reading Order */
+.reading-order {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Semantic Structure */
+.semantic-heading {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+/* Interactive Elements */
+.interactive-element {
+    cursor: pointer;
+    user-select: none;
+}
+
+.interactive-element:focus {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+/* Form Accessibility */
+.accessible-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accessible-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.accessible-form input,
+.accessible-form select,
+.accessible-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+}
+
+.accessible-form input:focus,
+.accessible-form select:focus,
+.accessible-form textarea:focus {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+/* Error States */
+.error-state {
+    border-color: var(--danger-500);
+}
+
+.error-message {
+    color: var(--danger-500);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Success States */
+.success-state {
+    border-color: var(--success-500);
+}
+
+.success-message {
+    color: var(--success-500);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Loading States */
+.loading-state {
+    position: relative;
+    cursor: wait;
+}
+
+.loading-state::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .print-only {
+        display: block !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .dark-mode-support {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+}
+
+/* Touch Device Support */
+@media (hover: none) {
+    .touch-device {
+        padding: 1rem;
+    }
+}
+
+/* High DPI Screen Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .high-dpi {
+        image-rendering: -webkit-optimize-contrast;
+    }
+} 

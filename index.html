@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ScriptBlox - Find and manage Roblox scripts">
+    <title>ScriptBlox - Roblox Scripts</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand" role="banner">ScriptBlox</div>
+            <div class="nav-links" role="menubar">
+                <a href="#" class="nav-link active" data-category="all" role="menuitem" aria-current="page">All Scripts</a>
+                <a href="#" class="nav-link" data-category="popular" role="menuitem">Popular</a>
+                <a href="#" class="nav-link" data-category="new" role="menuitem">New</a>
+                <a href="#" class="nav-link" data-category="verified" role="menuitem">Verified</a>
+            </div>
+            <div class="nav-auth">
+                <button class="login-btn" aria-label="Login to ScriptBlox">Login</button>
+                <button class="signup-btn" aria-label="Sign up for ScriptBlox">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" role="main">
+        <section class="search-section" aria-label="Search and filters">
+            <div class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="searchInput" placeholder="Search for scripts or games..." aria-label="Search scripts and games">
+                    <button id="searchButton" aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Search
+                    </button>
+                </div>
+                <div class="scan-buttons">
+                    <button id="scanGamesButton" class="scan-btn" aria-label="Scan for games">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9"></path>
+                        </svg>
+                        Scan Games
+                    </button>
+                    <button id="scanScriptsButton" class="scan-btn script-scan" aria-label="Scan for scripts">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                        Scan Scripts
+                    </button>
+                </div>
+                <div class="data-actions">
+                    <input type="file" id="importData" accept=".json" style="display: none;" aria-label="Import data file">
+                    <button id="importButton" class="action-btn" aria-label="Import data">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Import
+                    </button>
+                    <button id="exportButton" class="action-btn" aria-label="Export data">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+            <div class="filter-container" role="group" aria-label="Script filters">
+                <select id="gameFilter" aria-label="Filter by game">
+                    <option value="">All Games</option>
+                </select>
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="game-hacks">🎮 Game Hacks</option>
+                    <option value="auto-farm">🤖 Auto Farm</option>
+                    <option value="teleport">🚀 Teleport</option>
+                    <option value="esp">👁️ ESP</option>
+                    <option value="gui">🎨 GUI</option>
+                    <option value="utility">🛠️ Utility</option>
+                </select>
+                <select id="executorFilter" aria-label="Filter by executor">
+                    <option value="">All Executors</option>
+                </select>
+                <select id="sortFilter" aria-label="Sort scripts">
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="updated">Recently Updated</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+                <div class="filter-checkboxes" role="group" aria-label="Additional filters">
+                    <label class="filter-checkbox">
+                        <input type="checkbox" id="verifiedFilter" aria-label="Show verified scripts only">
+                        Verified Only
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" id="premiumFilter" aria-label="Show premium scripts only">
+                        Premium Only
+                    </label>
+                    <label class="filter-checkbox">
+                        <input type="checkbox" id="patchedFilter" aria-label="Show patched scripts">
+                        Show Patched
+                    </label>
+                </div>
+            </div>
+        </section>
+        
+        <div id="comparisonContainer" class="comparison-container" style="display: none;" role="region" aria-label="Script comparison"></div>
+        
+        <section class="script-list-container">
+            <div class="script-list" id="scriptList" role="list">
+                <!-- Scripts will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="scriptModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true" style="display: none;">
+        <div class="modal-content">
+            <button class="close-button" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div class="modal-info">
+                    <p id="modalGame"></p>
+                    <div id="modalExecutors" class="executors"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <pre id="modalCode"></pre>
+            </div>
+            <div class="modal-footer">
+                <button id="copyButton" aria-label="Copy script to clipboard">Copy Script</button>
+                <button id="executeButton" aria-label="Execute script">Execute</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Scripts -->
+    <script src="js/script-categories.js"></script>
+    <script src="js/script-comparison.js"></script>
+    <script src="js/data-storage.js"></script>
+    <script src="js/scriptblox-api.js"></script>
+    <script src="js/roblox-api.js"></script>
+    <script src="js/executors.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/init.js"></script>
+
+    <!-- Game Data Scripts -->
+    <script src="js/games/games-data.js"></script>
+    <script src="js/games/games-data-2.js"></script>
+    <script src="js/games/games-data-3.js"></script>
+    <script src="js/games/games-data-4.js"></script>
+    <script src="js/games/games-data-5.js"></script>
+    <script src="js/games/games-data-6.js"></script>
+    <script src="js/games/games-data-7.js"></script>
+    <script src="js/games/games-data-8.js"></script>
+    <script src="js/games/games-data-9.js"></script>
+    <script src="js/games/games-data-10.js"></script>
+    <script src="js/games/games-data-11.js"></script>
+    <script src="js/games/games-data-12.js"></script>
+    <script src="js/games/games-data-13.js"></script>
+    <script src="js/games/games-data-14.js"></script>
+    <script src="js/games/games-data-15.js"></script>
+    <script src="js/games/games-data-16.js"></script>
+    <script src="js/games/games-data-17.js"></script>
+    <script src="js/games/games-data-18.js"></script>
+    <script src="js/games/games-data-19.js"></script>
+    <script src="js/games/games-data-20.js"></script>
+    <script src="js/games/games-data-21.js"></script>
+    <script src="js/games/games-data-22.js"></script>
+    <script src="js/games/games-data-25.js"></script>
+    <script src="js/games/games-data-26.js"></script>
+    <script src="js/games/games-data-27.js"></script>
+    <script src="js/games/games-data-28.js"></script>
+    <script src="js/games/games-data-29.js"></script>
+    <script src="js/games/games-data-30.js"></script>
+    <script src="js/games/games-data-31.js"></script>
+    <script src="js/games/games-data-32.js"></script>
+    
+    <!-- Script Data Files -->
+    <script src="js/scripts/game-scripts.js"></script>
+    <script src="js/scripts/game-scripts-2.js"></script>
+    <script src="js/scripts/game-scripts-3.js"></script>
+    <script src="js/scripts/game-scripts-4.js"></script>
+    <script src="js/scripts/game-scripts-5.js"></script>
+    <script src="js/scripts/game-scripts-6.js"></script>
+    <script src="js/scripts/game-scripts-7.js"></script>
+    <script src="js/scripts/game-scripts-8.js"></script>
+    <script src="js/scripts/game-scripts-9.js"></script>
+    <script src="js/scripts/game-scripts-10.js"></script>
+    <script src="js/scripts/game-scripts-11.js"></script>
+    <script src="js/scripts/game-scripts-12.js"></script>
+    <script src="js/scripts/game-scripts-13.js"></script>
+    <script src="js/scripts/game-scripts-14.js"></script>
+    <script src="js/scripts/game-scripts-15.js"></script>
+    <script src="js/scripts/game-scripts-16.js"></script>
+    <script src="js/scripts/game-scripts-17.js"></script>
+    <script src="js/scripts/game-scripts-18.js"></script>
+    <script src="js/scripts/game-scripts-19.js"></script>
+    <script src="js/scripts/game-scripts-20.js"></script>
+    <script src="js/scripts/game-scripts-21.js"></script>
+    <script src="js/scripts/game-scripts-22.js"></script>
+    <script src="js/scripts/game-scripts-23.js"></script>
+    <script src="js/scripts/game-scripts-24.js"></script>
+    <script src="js/scripts/game-scripts-25.js"></script>
+    <script src="js/scripts/game-scripts-26.js"></script>
+    <script src="js/scripts/game-scripts-27.js"></script>
+    <script src="js/scripts/game-scripts-28.js"></script>
+    <script src="js/scripts/game-scripts-29.js"></script>
+    <script src="js/scripts/game-scripts-30.js"></script>
+    <script src="js/scripts/game-scripts-31.js"></script>
+    <script src="js/scripts/game-scripts-32.js"></script>
+</body>
+</html> 

@@ -1,0 +1,190 @@
+/* Form Styles */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+/* Form Control Sizes */
+.form-control-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.form-control-lg {
+    padding: 12px 16px;
+    font-size: 16px;
+}
+
+/* Form Control States */
+.form-control:disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-control.is-invalid {
+    border-color: var(--accent-color);
+}
+
+.form-control.is-valid {
+    border-color: var(--primary-color);
+}
+
+/* Form Text */
+.form-text {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Form Check */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+.form-check-label {
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Form Select */
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+/* Form Range */
+.form-range {
+    width: 100%;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.form-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Form File */
+.form-file {
+    position: relative;
+}
+
+.form-file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Form Validation */
+.invalid-feedback {
+    display: none;
+    color: var(--accent-color);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.valid-feedback {
+    display: none;
+    color: var(--primary-color);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.is-valid ~ .valid-feedback {
+    display: block;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+/* Form Inline */
+.form-inline {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+/* Responsive Forms */
+@media (max-width: 768px) {
+    .form-inline {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+} 

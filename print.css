@@ -1,0 +1,212 @@
+/* Print Styles */
+
+@media print {
+    /* Reset */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Layout */
+    body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 12pt;
+        color: #000;
+    }
+
+    /* Headers */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    h1 { font-size: 24pt; }
+    h2 { font-size: 20pt; }
+    h3 { font-size: 16pt; }
+    h4 { font-size: 14pt; }
+    h5 { font-size: 12pt; }
+    h6 { font-size: 10pt; }
+
+    /* Links */
+    a {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+    }
+
+    /* Hide Elements */
+    .no-print,
+    .nav,
+    .sidebar,
+    .footer,
+    .header,
+    .ads,
+    .comments,
+    .social-share {
+        display: none !important;
+    }
+
+    /* Page Breaks */
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    table {
+        page-break-inside: avoid;
+    }
+
+    /* Margins */
+    @page {
+        margin: 2cm;
+    }
+
+    /* Lists */
+    ul, ol {
+        list-style: disc outside;
+    }
+
+    /* Code Blocks */
+    pre, code {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* Forms */
+    input, textarea {
+        border: 1px solid #000;
+    }
+
+    /* Tables */
+    table {
+        border-collapse: collapse !important;
+    }
+
+    th, td {
+        border: 1px solid #000 !important;
+    }
+
+    /* Background Colors */
+    .bg-primary,
+    .bg-secondary,
+    .bg-success,
+    .bg-danger,
+    .bg-warning,
+    .bg-info {
+        color: #000 !important;
+        background: none !important;
+    }
+
+    /* Text Colors */
+    .text-primary,
+    .text-secondary,
+    .text-success,
+    .text-danger,
+    .text-warning,
+    .text-info {
+        color: #000 !important;
+    }
+
+    /* Buttons */
+    .btn,
+    .button {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: none !important;
+    }
+
+    /* Cards */
+    .card {
+        border: 1px solid #000 !important;
+        background: none !important;
+    }
+
+    /* Alerts */
+    .alert {
+        border: 1px solid #000 !important;
+        background: none !important;
+    }
+
+    /* Badges */
+    .badge {
+        border: 1px solid #000 !important;
+        background: none !important;
+    }
+
+    /* Navigation */
+    nav {
+        display: none !important;
+    }
+
+    /* Footer */
+    footer {
+        display: none !important;
+    }
+
+    /* Sidebar */
+    aside {
+        display: none !important;
+    }
+
+    /* Main Content */
+    main {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Container */
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Grid */
+    .row {
+        display: block !important;
+    }
+
+    .col {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    /* Flexbox */
+    .flex {
+        display: block !important;
+    }
+
+    /* Utilities */
+    .d-print-none {
+        display: none !important;
+    }
+
+    .d-print-block {
+        display: block !important;
+    }
+
+    .d-print-inline {
+        display: inline !important;
+    }
+
+    .d-print-inline-block {
+        display: inline-block !important;
+    }
+} 
